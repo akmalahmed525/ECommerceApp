@@ -4,7 +4,8 @@
     "typeRoots": ["./node_modules/@types", "./src/core/types"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-    }
+      "@core/*": ["./src/core/*"],
+      "@features/*": ["./src/features/*"],
+    },
   }
 }

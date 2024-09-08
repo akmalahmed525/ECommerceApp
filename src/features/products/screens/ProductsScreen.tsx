@@ -2,10 +2,10 @@ import React, {FunctionComponent, useEffect} from 'react';
 import {SafeAreaView, FlatList, View, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {fetchProducts} from '@/features/products/products.slice';
+import {fetchProducts} from '@features/products/products.slice';
 
-import type {IRootState} from '@/core/store';
-import type {ProductsState} from '@/features/products/types/products';
+import type {IRootState} from '@core/store';
+import type {ProductsState} from '@features/products/types/products';
 
 type ProductsScreenProps = {};
 export const ProductsScreen: FunctionComponent<ProductsScreenProps> = () => {

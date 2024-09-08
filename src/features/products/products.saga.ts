@@ -1,12 +1,12 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
 import {AxiosResponse, isAxiosError} from 'axios';
 
-import API from '@/core/api';
+import API from '@core/api';
 import {
   onProductsRequestFailure,
   onProductsRequestSuccess,
-} from '@/features/products/products.slice';
-import type {ProductsResponse} from '@/features/products/types/products';
+} from '@features/products/products.slice';
+import type {ProductsResponse} from '@features/products/types/products';
 
 function* fetchProductsAsync() {
   try {
