@@ -1,0 +1,37 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/SUSE-Bold.ttf",
+      "sha1": "c984072338e2031aa3efb2d696741a5636ebb949"
+    },
+    {
+      "path": "src/assets/fonts/SUSE-ExtraBold.ttf",
+      "sha1": "2d5a88e350cf7eaa408be839c6b49361f206eab5"
+    },
+    {
+      "path": "src/assets/fonts/SUSE-ExtraLight.ttf",
+      "sha1": "0ad83e9fa9e8390fde2f6e5be33dbd26836f62f8"
+    },
+    {
+      "path": "src/assets/fonts/SUSE-Light.ttf",
+      "sha1": "3f43b7bcf281c6a2e2f7e567d9b9f007008e10c6"
+    },
+    {
+      "path": "src/assets/fonts/SUSE-Medium.ttf",
+      "sha1": "b77b4c7650fa17f39d6e56f248d6b9a243fd54aa"
+    },
+    {
+      "path": "src/assets/fonts/SUSE-Regular.ttf",
+      "sha1": "b5dcd37f3156bdc949976f36ace4afce528e041e"
+    },
+    {
+      "path": "src/assets/fonts/SUSE-SemiBold.ttf",
+      "sha1": "08fa45fc6f94dd5d7954965005aa78cf2a727bab"
+    },
+    {
+      "path": "src/assets/fonts/SUSE-Thin.ttf",
+      "sha1": "0e580ae0c639cc1b06ba555ec15aa4f5a9f1eef8"
+    }
+  ]
+}
