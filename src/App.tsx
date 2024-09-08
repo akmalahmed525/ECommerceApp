@@ -1,12 +1,14 @@
 import React, {FunctionComponent} from 'react';
-import {SafeAreaView, Text} from 'react-native';
-import Config from 'react-native-config';
+import {Provider} from 'react-redux';
+import {ProductsScreen} from '@/features/products/screens';
+
+import store from '@/core/store';
 
 type AppProps = {};
 const App: FunctionComponent<AppProps> = () => (
-  <SafeAreaView>
-    <Text>{Config.API_URL}</Text>
-  </SafeAreaView>
+  <Provider store={store}>
+    <ProductsScreen />
+  </Provider>
 );
 
 export default App;

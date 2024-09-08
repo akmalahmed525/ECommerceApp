@@ -20,14 +20,14 @@ class API {
   }
 
   public get<T>(
-    url: string,
+    url: string = '',
     config?: AxiosRequestConfig,
   ): Promise<AxiosResponse<T>> {
     return this._axiosClient.get<T>(url, config);
   }
 
   public post<T>(
-    url: string,
+    url: string = '',
     data: any,
     config?: AxiosRequestConfig,
   ): Promise<AxiosResponse<T>> {
@@ -35,7 +35,7 @@ class API {
   }
 
   public put<T>(
-    url: string,
+    url: string = '',
     data: any,
     config?: AxiosRequestConfig,
   ): Promise<AxiosResponse<T>> {
@@ -43,7 +43,7 @@ class API {
   }
 
   public delete<T>(
-    url: string,
+    url: string = '',
     config?: AxiosRequestConfig,
   ): Promise<AxiosResponse<T>> {
     return this._axiosClient.delete<T>(url, config);
