@@ -1,12 +1,12 @@
 import React, {FunctionComponent} from 'react';
 import {
-  Pressable,
   StyleSheet,
   Text,
   View,
   Image,
   useWindowDimensions,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 import {Grayscale} from 'react-native-color-matrix-image-filters';
 import {Product} from '@features/products/types/products';
@@ -24,13 +24,13 @@ export const ProductItem: FunctionComponent<ProductItemProps> = ({
   const {price, stockStatus} = product;
   const textColor = stockStatus === 'IN STOCK' ? '#0A0A0A' : '#808080';
   return (
-    <Pressable
-      style={[styles.container, {width: width * 0.7}]}
+    <TouchableOpacity
       onPress={() => {
         if (stockStatus === 'IN STOCK') {
           onPress(product);
         }
-      }}>
+      }}
+      style={[styles.container, {width: width * 0.7}]}>
       <View style={styles.cardContent}>
         <View style={styles.productImageContent}>
           {stockStatus === 'IN STOCK' ? (
@@ -63,7 +63,7 @@ export const ProductItem: FunctionComponent<ProductItemProps> = ({
           </Text>
         </View>
       </View>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 
