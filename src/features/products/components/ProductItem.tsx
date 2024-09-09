@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {Grayscale} from 'react-native-color-matrix-image-filters';
 import {Product} from '@features/products/types';
-import {getCurrencySymbol} from '@core/utils';
+import {getCurrency} from '@core/utils';
 
 type ProductItemProps = {
   product: Product;
@@ -59,7 +59,7 @@ export const ProductItem: FunctionComponent<ProductItemProps> = ({
           <Text
             numberOfLines={1}
             style={[styles.priceLabel, {color: textColor}]}>
-            {`${getCurrencySymbol(price.currency)}${price.amount}`}
+            {`${getCurrency(parseFloat(price.amount))}`}
           </Text>
         </View>
       </View>

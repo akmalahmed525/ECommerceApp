@@ -7,6 +7,7 @@ import type {Product} from '@features/products/types';
 
 import {ProductCountButton} from '@core/components';
 import {onAddItem, onRemoveSpecificItem} from '@features/cart/cart.slice';
+import {getCurrency} from '@core/utils';
 
 type CartListItemProps = {
   cartItems: CartItem[];
@@ -41,7 +42,14 @@ export const CartListItem: FunctionComponent<CartListItemProps> = ({
             style={styles.productName}>
             {cartItem.name}
           </Text>
-          <Text style={styles.productBrand}>Brand: {cartItem.brandName}</Text>
+          <Text style={styles.productBrand}>
+            Brand: {cartItem.brandName ?? 'Unknown'}
+          </Text>
+          <Text numberOfLines={1} style={styles.priceLabel}>
+            {`${getCurrency(
+              parseFloat(cartItem.price.amount) * cartItems.length,
+            )}`}
+          </Text>
           {Object.keys(groupedBySize)
             .sort((a, b) => parseInt(a) - parseInt(b))
             .map((sizeKey, key) => (
@@ -118,5 +126,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  priceLabel: {
+    fontSize: 28,
+    fontFamily: 'SUSE-Bold',
   },
 });

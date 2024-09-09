@@ -10,14 +10,14 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useDispatch, useSelector} from 'react-redux';
 
+import type {IRootState} from '@core/store';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
+import type {CartItems} from '@features/cart/types';
 
 import {RootStackParams} from '@core/navigation';
-import {getCurrencySymbol} from '@core/utils';
+import {getCurrency} from '@core/utils';
 import {ProductSizeSelectionButtonList} from '@features/products/components';
 import {onAddItem, onRemoveItem} from '@features/cart/cart.slice';
-import {IRootState} from '@core/store';
-import {CartItems} from '@features/cart/types';
 import {AppButton, ProductCountButton} from '@core/components';
 
 type ProductDetailsScreenProps = {} & NativeStackScreenProps<
@@ -33,7 +33,7 @@ export const ProductDetailsScreen: FunctionComponent<
   const product = route.params;
   const {SKU, brandName, name, colour, description, mainImage, price, sizes} =
     product;
-  const {currency, amount} = price;
+  const {amount} = price;
 
   const [size, setSize] = useState<string>(sizes[0]);
   const cart = useSelector<IRootState, CartItems>(state => state.cart);
@@ -61,7 +61,7 @@ export const ProductDetailsScreen: FunctionComponent<
             }}
           />
           <Text numberOfLines={1} style={[styles.priceLabel]}>
-            {`${getCurrencySymbol(currency)}${amount}`}
+            {`${getCurrency(parseFloat(amount))}`}
           </Text>
         </View>
       </ScrollView>
