@@ -7,6 +7,7 @@ module.exports = {
         'alias': {
           '@core': './src/core',
           '@features': './src/features',
+          '@assets': './src/assets',
         },
       },
     ],

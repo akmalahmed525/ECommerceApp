@@ -6,6 +6,7 @@
     "paths": {
       "@core/*": ["./src/core/*"],
       "@features/*": ["./src/features/*"],
+      "@assets/*": ["./src/assets/*"],
     },
   }
 }
