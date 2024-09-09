@@ -4,12 +4,16 @@ import {ProductSizeSelectionButton} from '@features/products/components';
 
 interface ProductSizeSelectionButtonListProps<T extends string> {
   data: T[];
+  value: T;
   onSelectValue: (value: T) => void;
 }
 export const ProductSizeSelectionButtonList: FunctionComponent<
   ProductSizeSelectionButtonListProps<string>
-> = <T extends string>({data, onSelectValue}: ProductSizeSelectionButtonListProps<T>) => {
-  const [value, setValue] = useState<T | null>(data.length ? data[0] : null);
+> = <T extends string>({
+  data,
+  value,
+  onSelectValue,
+}: ProductSizeSelectionButtonListProps<T>) => {
   return (
     <FlatList
       horizontal
@@ -20,7 +24,6 @@ export const ProductSizeSelectionButtonList: FunctionComponent<
           selectedItem={value}
           label={item}
           onPress={() => {
-            setValue(item);
             onSelectValue(item);
           }}
         />

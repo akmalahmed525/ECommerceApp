@@ -5,16 +5,20 @@ import {
   StyleSheet,
   ScrollView,
   Text,
-  TouchableOpacity,
   Platform,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {useDispatch, useSelector} from 'react-redux';
 
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {RootStackParams} from '@core/navigation';
 import {getCurrencySymbol} from '@core/utils';
 import {ProductSizeSelectionButtonList} from '@features/products/components';
+import {onAddItem, onRemoveItem} from '@features/cart/cart.slice';
+import {IRootState} from '@core/store';
+import {CartItems} from '@features/cart/types';
+import {AppButton, ProductCountButton} from '@core/components';
 
 type ProductDetailsScreenProps = {} & NativeStackScreenProps<
   RootStackParams,
@@ -23,11 +27,20 @@ type ProductDetailsScreenProps = {} & NativeStackScreenProps<
 export const ProductDetailsScreen: FunctionComponent<
   ProductDetailsScreenProps
 > = ({route}) => {
+  const dispatch = useDispatch();
+
   const [widgetHeight, setWidgetHeight] = useState(0);
-  const products = route.params;
-  const {brandName, name, colour, description, mainImage, price, sizes} =
-    products;
+  const product = route.params;
+  const {SKU, brandName, name, colour, description, mainImage, price, sizes} =
+    product;
   const {currency, amount} = price;
+
+  const [size, setSize] = useState<string>(sizes[0]);
+  const cart = useSelector<IRootState, CartItems>(state => state.cart);
+
+  const totalCount = cart.filter(({product}) => product.SKU === SKU).length;
+
+  const isItemAlreadyInCart = totalCount > 0;
 
   return (
     <SafeAreaView edges={['bottom']} style={styles.container}>
@@ -42,8 +55,9 @@ export const ProductDetailsScreen: FunctionComponent<
           <Text style={styles.productDescription}>{description}</Text>
           <ProductSizeSelectionButtonList
             data={sizes}
+            value={size}
             onSelectValue={value => {
-              console.log(value);
+              setSize(value);
             }}
           />
           <Text numberOfLines={1} style={[styles.priceLabel]}>
@@ -51,20 +65,57 @@ export const ProductDetailsScreen: FunctionComponent<
           </Text>
         </View>
       </ScrollView>
-      <View
-        style={styles.bottomActionBar}
-        onLayout={event => {
-          const {height} = event.nativeEvent.layout;
-          setWidgetHeight(height);
-        }}>
-        <SafeAreaView edges={['bottom']}>
-          <TouchableOpacity>
-            <View style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>Add to cart</Text>
-            </View>
-          </TouchableOpacity>
-        </SafeAreaView>
-      </View>
+      {isItemAlreadyInCart ? (
+        <View
+          style={styles.bottomActionBar}
+          onLayout={event => {
+            const {height} = event.nativeEvent.layout;
+            setWidgetHeight(height);
+          }}>
+          <SafeAreaView style={styles.buttonContainer} edges={['bottom']}>
+            <ProductCountButton
+              count={totalCount}
+              onPressAdd={() => {
+                dispatch(
+                  onAddItem({
+                    product,
+                    size,
+                  }),
+                );
+              }}
+              onPressSubtract={() => {
+                dispatch(
+                  onRemoveItem({
+                    product,
+                    size,
+                  }),
+                );
+              }}
+            />
+          </SafeAreaView>
+        </View>
+      ) : (
+        <View
+          style={styles.bottomActionBar}
+          onLayout={event => {
+            const {height} = event.nativeEvent.layout;
+            setWidgetHeight(height);
+          }}>
+          <SafeAreaView style={styles.buttonContainer} edges={['bottom']}>
+            <AppButton
+              onPress={() => {
+                dispatch(
+                  onAddItem({
+                    product,
+                    size,
+                  }),
+                );
+              }}>
+              Add to cart
+            </AppButton>
+          </SafeAreaView>
+        </View>
+      )}
     </SafeAreaView>
   );
 };
@@ -113,16 +164,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   buttonContainer: {
-    borderRadius: 15,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    padding: 15,
     marginHorizontal: 10,
-  },
-  buttonText: {
-    fontSize: 20,
-    color: '#FFFFFF',
-    fontFamily: 'SUSE-Bold',
   },
 });

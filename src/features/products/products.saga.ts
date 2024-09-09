@@ -6,7 +6,7 @@ import {
   onProductsRequestFailure,
   onProductsRequestSuccess,
 } from '@features/products/products.slice';
-import type {ProductsResponse} from '@features/products/types/products';
+import type {ProductsResponse} from '@features/products/types';
 
 function* fetchProductsAsync() {
   try {

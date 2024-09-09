@@ -13,7 +13,7 @@ import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {fetchProducts} from '@features/products/products.slice';
 
 import type {IRootState} from '@core/store';
-import type {ProductsState} from '@features/products/types/products';
+import type {ProductsState} from '@features/products/types';
 import {ProductItem, ProductItemSeparator} from '@features/products/components';
 import {RootStackParams} from '@core/navigation';
 

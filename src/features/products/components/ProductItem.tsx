@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {Grayscale} from 'react-native-color-matrix-image-filters';
-import {Product} from '@features/products/types/products';
+import {Product} from '@features/products/types';
 import {getCurrencySymbol} from '@core/utils';
 
 type ProductItemProps = {
