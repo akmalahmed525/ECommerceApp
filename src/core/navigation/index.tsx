@@ -48,6 +48,7 @@ export const Root = () => {
         name="ProductDetails"
         component={ProductDetailsScreen}
         options={({navigation}) => ({
+          title: 'Product Details',
           headerRight: () => (
             <HeaderButton
               showIndicator={cart.length > 0}
