@@ -16,6 +16,7 @@ class MainActivity : ReactActivity() {
   override fun getMainComponentName(): String = "ECommerceApp"
 
   override fun onCreate(savedInstanceState: Bundle?) {
+    setTheme(R.style.SplashScreenTheme)
     super.onCreate(null)
   }
 

@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ECommerceApp</string>
+    <string name="app_name">Shoe Bazaar</string>
+    <string name="splash_image_icon">Splash Image Icon</string>
 </resources>

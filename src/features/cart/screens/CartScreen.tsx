@@ -31,7 +31,7 @@ export const CartScreen: FunctionComponent<CartScreenProps> = ({}) => {
 
   const totalAmount = cart
     .map(({product}) => parseInt(product.price.amount))
-    .reduce((amount1, amount2) => amount1 + amount2);
+    .reduce((amount1, amount2) => amount1 + amount2, 0);
 
   return (
     <View style={styles.container}>
@@ -98,5 +98,6 @@ const styles = StyleSheet.create({
   priceTotalLabel: {
     fontSize: 28,
     fontFamily: 'SUSE-Bold',
+    color: '#0A0A0A',
   },
 });

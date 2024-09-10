@@ -130,5 +130,6 @@ const styles = StyleSheet.create({
   priceLabel: {
     fontSize: 28,
     fontFamily: 'SUSE-Bold',
+    color: '#0A0A0A',
   },
 });

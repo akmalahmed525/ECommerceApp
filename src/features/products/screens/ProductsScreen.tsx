@@ -21,7 +21,9 @@ type ProductsScreenProps = {} & NativeStackScreenProps<
   RootStackParams,
   'Products'
 >;
-export const ProductsScreen: FunctionComponent<ProductsScreenProps> = ({navigation}) => {
+export const ProductsScreen: FunctionComponent<ProductsScreenProps> = ({
+  navigation,
+}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,41 +36,50 @@ export const ProductsScreen: FunctionComponent<ProductsScreenProps> = ({navigati
 
   const {isLoading, errorMessage, data} = productsState;
 
-  return (
+  return isLoading ? (
+    <SafeAreaView style={styles.container}>
+      <ActivityIndicator size={'large'} color={'#FF0000'} />
+    </SafeAreaView>
+  ) : errorMessage && !data.length ? (
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.errorLabel}>{errorMessage}</Text>
+    </SafeAreaView>
+  ) : (
     <SafeAreaView>
-      {isLoading ? (
-        <ActivityIndicator />
-      ) : errorMessage && !data.length ? (
-        <Text>{errorMessage}</Text>
-      ) : (
-        <FlatList
-          horizontal
-          data={data}
-          contentContainerStyle={styles.listContentContainer}
-          showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => (
-            <ProductItem
-              key={item.id}
-              product={item}
-              onPress={value => {
-                navigation.navigate('ProductDetails', value);
-              }}
-            />
-          )}
-          ItemSeparatorComponent={ProductItemSeparator}
-          keyExtractor={item => item.id}
-        />
-      )}
+      <FlatList
+        horizontal
+        data={data}
+        contentContainerStyle={styles.listContentContainer}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({item}) => (
+          <ProductItem
+            key={item.id}
+            product={item}
+            onPress={value => {
+              navigation.navigate('ProductDetails', value);
+            }}
+          />
+        )}
+        ItemSeparatorComponent={ProductItemSeparator}
+        keyExtractor={item => item.id}
+      />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  listContainer: {
-    height: 50,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   listContentContainer: {
     paddingVertical: 10,
     paddingHorizontal: 15,
+  },
+  errorLabel: {
+    fontSize: 20,
+    fontFamily: 'SUSE-Medium',
+    color: '#0A0A0A',
   },
 });

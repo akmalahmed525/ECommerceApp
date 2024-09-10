@@ -87,9 +87,11 @@ const styles = StyleSheet.create({
   itemCountTextLarge: {
     fontSize: 30,
     fontFamily: 'SUSE-Bold',
+    color: '#0A0A0A',
   },
   itemCountTextNormal: {
     fontSize: 15,
     fontFamily: 'SUSE-Bold',
+    color: '#0A0A0A',
   },
 });
