@@ -8,7 +8,7 @@ import {
 } from '@features/products/products.slice';
 import type {ProductsResponse} from '@features/products/types';
 
-function* fetchProductsAsync() {
+export function* fetchProductsAsync() {
   try {
     const productsResponse: AxiosResponse<ProductsResponse> = yield call(() =>
       API.get(),
