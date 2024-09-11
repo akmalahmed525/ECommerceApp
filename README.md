@@ -56,7 +56,7 @@ You must follow the steps given in the [official documentation](https://reactnat
 
    ![alt text](docs/test-cases.png)
 
-10. Screen Recording of iOS  
+10. Screen Recording of `iOS` and `Android`.  
   
    [![iOS](./docs/thumbnail-ios.PNG)](https://youtu.be/ES4fyLz_Cko)
 
