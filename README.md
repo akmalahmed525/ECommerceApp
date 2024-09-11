@@ -25,34 +25,39 @@ You must follow the steps given in the [official documentation](https://reactnat
    ```sh
    yarn
    ```
-5. Start the metro server via the command below.
+5. Create a `.env` file from `.env.example` file and add the API url
+   ```sh
+   cp .env.example .env
    ```
-   yarn start --reset-cache
+6. Point your server URL to the `API_URL` property in the `.env` file.
+   ```env
+   API_URL=https://..../products.json
    ```
-6. Open a new terminal in the same directory and run either of the command below to install the development version of the application in your device.
+   ![alt text](docs/env.png)
+7. Open a new terminal in the same directory and run either of the command below to install the development version of the application in your device.
    ```sh
    yarn android # for Android devices
    yarn ios # for iOS devices
    ```
-7. Your App will be installed  
+8. Your App will be installed  
    
    iOS
    ---
-   ![alt text](docs/image.png)
+   ![alt text](docs/ios.png)
 
    Android
    ---
-   ![alt text](docs/image-1.png)
+   ![alt text](docs/android.png)
 
-8. To run the test cases, run the command below (written only for `Redux` and `Redux Saga` functions due to time constraints).
+9. To run the test cases, run the command below (written only for `Redux` and `Redux Saga` functions due to time constraints).
    ```sh
    yarn test --watch
    ```
 
-   ![alt text](docs/image-test.png)
+   ![alt text](docs/test-cases.png)
 
-9. Screen Recording of iOS  
+10. Screen Recording of iOS  
   
    [![iOS](./docs/thumbnail-ios.PNG)](https://youtu.be/ES4fyLz_Cko)
 
-   [![Android](./docs/thumbnail-android.PNG)](https://youtu.be/jO0wkjApItw)
+   [![Android](./docs/thumbnail-android.png)](https://youtu.be/jO0wkjApItw)
